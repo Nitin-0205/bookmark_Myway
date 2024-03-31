@@ -1,0 +1,184 @@
+#container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 20px;
+    min-height: 100vh;
+    height: 100%;
+}
+
+#container > div {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border:2 px solid #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#container > div > h2 {
+    margin-top: 0;
+    
+}
+
+#container > div > p {
+    margin-bottom: 0;
+}
+#container #sidenav{
+    background-color: #bebebe;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+
+}
+
+#catagoryTitle{
+    display: block;
+    align-self: center;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color:royalblue;
+    margin-bottom: 20px;
+}
+#catagoryTitle .icon{
+    font-size: 10px; 
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.licat { 
+    list-style-type: none;
+    padding: 0.5rem ,2rem;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: rgb(103, 103, 103);
+    border:1px solid #528bee;
+    margin-left: 0cm;
+}
+
+.licat:hover{
+    background-color: #528bee;
+    color: white;
+    border:1px solid #528bee;
+}
+
+.licat a{
+    text-decoration: none;
+    color: rgb(103, 103, 103);
+}
+
+.licat a:hover{
+    color: white;
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+width: 100%;
+background-color: #f9f9f9;
+}
+
+#main #search{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 1rem;
+}
+
+#main #search input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #528bee;
+    width: 100%;
+}
+
+#main #search button{
+    background-color: #528bee;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+#main #bookmark{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#main #bookmark h2{
+    margin: 0;
+}
+
+#main #bookmark button{
+    background-color: #528bee;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#main #bookmark button:hover{
+    background-color: #528bee;
+}
+
+#main #bookmark button:active{
+    background-color: #528bee;
+}
+
+#main #bookmark button:focus{
+    background-color: #528bee;
+}
+
+#main #bookmark button:visited{
+    background-color: #528bee;
+}
+
+#main #bookmark button:link{
+    background-color: #528bee;
+}
+
+#main #bookmark #bookmarkContent{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+#bookmarkCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border:2 px solid #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+#main #bookmark #bookmarkContent .bookmarkItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border:2 px solid #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+}
+
