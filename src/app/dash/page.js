@@ -15,10 +15,9 @@ export default function Page() {
         // fetch('https://bookmark-backend.vercel.app/catagories', {
         //query the backend for the catagories
         console.log(localStorage.getItem('token'))
-        // const userId = JSON.parse(localStorage.getItem('data')).id
-        let userId = '66087837757dbba513ad9f24'
+        const userId = JSON.parse(localStorage.getItem('data')).id
         setUserId(userId)
-        fetch(`http://localhost:8000/catagory/name/?userId=${userId}`, {
+        fetch(`https://bookmark-backend.vercel.app/catagory/name/?userId=${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +31,7 @@ export default function Page() {
     }, [])
 
     const getAllbookmark = () => {
-        fetch(`http://localhost:8000/bookmarks/?userId=${user}`, {
+        fetch(`https://bookmark-backend.vercel.app/bookmarks/?userId=${user}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
