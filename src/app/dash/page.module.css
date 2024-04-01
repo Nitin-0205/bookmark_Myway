@@ -174,9 +174,9 @@ background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px;
-    background-color: #ffd4d4;
+    background-color: #e3ffea;
     border:2 px solid #f9f9f9;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -184,3 +184,6 @@ background-color: #f9f9f9;
     margin-bottom: 10px;
 }
 
+.categoryTitle{
+    color:gray
+}

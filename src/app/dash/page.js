@@ -5,11 +5,23 @@ import { useRouter } from 'next/navigation';
 
 export default function Page() {
     const [openCatagories, setOpenCatagories] = useState(true);
-    const [catagories, setCatagories] = useState(["unsorted", "movies"]);
+    const [catagories, setCatagories] = useState([]);
     const [user, setUserId] = useState(null);
     const [search, setSearch] = useState('');
     const Route = useRouter();
-    const [bookmark, setBookmark] = useState([]);
+    const [bookmark, setBookmark] = useState([{
+        category: "unsorted",
+        date: "31-3-2024",
+        tag: [],
+        tags: [''],
+        title: "",
+        url: "",
+        user: "66087837757dbba513ad9f24",
+        __v:
+            0,
+        _id:
+            "66087b2914f341732d31f2f1"
+    }]);
 
 
 
@@ -27,17 +39,18 @@ export default function Page() {
             .then(data => {
                 console.log(data)
                 setCatagories(data)
+                console.log("dsf")
             })
 
-        // allCategory(userId)
 
+        getAllbookmark()
 
     }, [])
 
 
     const getAllbookmark = async () => {
         console.log('clicked')
-        let response = await fetch(`http://localhost:8000/bookmark/?userId=66086bff0a1c9448458ee13b`, {
+        let response = await fetch(`https://bookmark-backend.vercel.app/bookmark/all`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,15 +58,14 @@ export default function Page() {
             }
         }).then(response => response.json())
 
+        console.log(response)
+
+        setBookmark([...response])
+
 
 
 
     }
-
-
-
-
-
 
     return (
         <div id={styles.container}>
@@ -71,8 +83,9 @@ export default function Page() {
                         Catagory</a>
                     <ul className={styles.catlist} >
                         {
-                            openCatagories && catagories.map(catagory => {
-                                return <li className={styles.licat} key={catagory.id} >{catagory}</li>
+
+                            openCatagories && catagories.map((catagory, index) => {
+                                return <li className={styles.licat} key={index} >{catagory}</li>
                             })
 
 
@@ -95,21 +108,40 @@ export default function Page() {
                 <div id={styles.bookmark}>
                     <div id={styles.bookmarkContent}>
                         {
-                            search.length <= 0 ? catagories.map(setBookmark => {
-                                return <div className={styles.setBookmark} key={setBookmark.id}>
-                                    <h2>{setBookmark}</h2>
-                                    <div className={styles.bookmarkList}>
-                                        <div className={styles.bookmarkItem}>
-                                            <a href="https://www.google.com" target="_blank">Google</a>
-                                            <p>Google is the best search engine</p>
-                                        </div>
-                                        <div className={styles.bookmarkItem}>
-                                            <a href="https://www.youtube.com" target="_blank">Youtube</a>
-                                            <p>Youtube is the best video platform</p>
+                            search.length <= 0 ? bookmark.map((setBookmark, ind) => {
+                                return (
+                                    <div className={styles.setBookmark} key={ind}>
+                                        <div className={styles.bookmarkList}>
+                                            <div className={styles.bookmarkItem}>
+                                                <h6 className={styles.categoryTitle}>catagory : {setBookmark.category}</h6>
+                                                <h3>{setBookmark.title}rdtfyghj</h3>
+                                                <a href={setBookmark.url} target="_blank">{setBookmark.url.slice(0, 50)}...</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            }) : <></>
+                                )
+                            }) : bookmark.filter((setBookmark) => {
+                                console.log(setBookmark.url.toLowerCase())
+                                return (
+                                    setBookmark.title.toLowerCase().includes(search.toLowerCase()) ||
+                                    setBookmark.category.toLowerCase().includes(search.toLowerCase()) ||
+                                    setBookmark.url.toLowerCase().includes(search.toLowerCase())
+                                    // setBookmark.tags.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
+                                )
+                            }).map((setBookmark, ind) => {
+                                console.log(setBookmark)
+                                return (
+                                    <div className={styles.setBookmark} key={ind}>
+                                        <div className={styles.bookmarkList}>
+                                            <div className={styles.bookmarkItem}>
+                                                <h6 className={styles.categoryTitle}>catagory : {setBookmark.category}</h6>
+                                                <h3>{setBookmark.title}rdtfyghj</h3>
+                                                <a href={setBookmark.url} target="_blank">{setBookmark.url.slice(0, 50)}...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
                         }
                     </div>
 
